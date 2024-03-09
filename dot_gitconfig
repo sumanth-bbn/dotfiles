@@ -1,0 +1,20 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Sumanth
+	email = nag.sumanth@gmail.com
+# Please adapt and uncomment the following lines:
+#	name = Sumanth
+#	email = nagsumanth
+#[credential]
+#	helper = 
+#	helper = /usr/local/share/gcm-core/git-credential-manager
+#[credential "https://dev.azure.com"]
+#	useHttpPath = true
+[pull]
+	rebase = true
+[core]
+	excludesfile = ~/.gitignore_global
+[credential]
+	helper = osxkeychain
+[init]
+	defaultBranch = main
