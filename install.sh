@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # -e: exit on error
 # -u: exit on unset variables
