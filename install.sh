@@ -20,6 +20,26 @@ if ! chezmoi="$(command -v chezmoi)"; then
 	unset chezmoi_install_script bin_dir
 fi
 
+# List of plugins to install
+plugins=("zsh-autosuggestions" "zsh-syntax-highlighting")
+
+# Directory for custom plugins
+plugin_dir="${HOME}/.oh-my-zsh/custom/plugins/"
+theme_dir="${HOME}/.oh-my-zsh/custom/themes/"
+
+# Ensure the plugin directory exists
+mkdir -p "${plugin_dir}"
+
+# Loop over the plugins and clone them
+for plugin in "${plugins[@]}"; do
+  if [ ! -d "${plugin_dir}/${plugin}" ]; then
+    echo "Installing ${plugin}..."
+    git clone "https://github.com/zsh-users/${plugin}.git" "${plugin_dir}/${plugin}"
+  fi
+done
+
+git clone "https://github.com/romkatv/powerlevel10k.git" "${theme_dir}/powerlevel10k"
+
 # POSIX way to get script's dir: https://stackoverflow.com/a/29834779/12156188
 script_dir="$(cd -P -- "$(dirname -- "$(command -v -- "$0")")" && pwd -P)"
 
