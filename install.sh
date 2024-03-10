@@ -32,13 +32,21 @@ mkdir -p "${plugin_dir}"
 
 # Loop over the plugins and clone them
 for plugin in "${plugins[@]}"; do
-  if [ ! -d "${plugin_dir}/${plugin}" ]; then
-    echo "Installing ${plugin}..."
-    git clone "https://github.com/zsh-users/${plugin}.git" "${plugin_dir}/${plugin}"
-  fi
+	if [ ! -d "${plugin_dir}/${plugin}" ]; then
+		echo "Installing ${plugin}..."
+		git clone "https://github.com/zsh-users/${plugin}.git" "${plugin_dir}/${plugin}"
+	else
+		echo "${plugin} already installed"
+	fi
 done
 
-git clone "https://github.com/romkatv/powerlevel10k.git" "${theme_dir}/powerlevel10k"
+if [ ! -d "${theme_dir}/powerlevel10k" ]; then
+	echo "Installing powerlevel10k..."
+	git clone "https://github.com/romkatv/powerlevel10k.git" "${theme_dir}/powerlevel10k"
+else
+  	echo "Powerlevel10k already installed"
+fi
+
 
 # POSIX way to get script's dir: https://stackoverflow.com/a/29834779/12156188
 script_dir="$(cd -P -- "$(dirname -- "$(command -v -- "$0")")" && pwd -P)"
