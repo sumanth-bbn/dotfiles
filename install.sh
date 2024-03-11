@@ -74,6 +74,14 @@ else
 	echo "fzf is already installed."
 fi
 
+# Check if zsh-interactive-cd is installed and install it if it's not
+if [ ! -d "${HOME}/.oh-my-zsh/custom/plugins/zsh-interactive-cd" ]; then
+	echo "zsh-interactive-cd is not installed. Installing zsh-interactive-cd..."
+	git clone "https://github.com/changyuheng/zsh-interactive-cd.git" "${HOME}/.oh-my-zsh/custom/plugins/zsh-interactive-cd"
+else
+	echo "zsh-interactive-cd is already installed."
+fi
+
 # Source zsh-interactive-cd.plugin.zsh in .zshrc
 zshrc="${HOME}/.zshrc"
 interactive_cd_plugin="${HOME}/.oh-my-zsh/custom/plugins/zsh-interactive-cd/zsh-interactive-cd.plugin.zsh"
